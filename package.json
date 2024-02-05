@@ -1,0 +1,13 @@
+{
+  "name": "playwright-e2e-poc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.41.2",
+    "@types/node": "^20.11.16"
+  },
+  "scripts": {
+    "test": "npx playwright test"
+  }
+}
