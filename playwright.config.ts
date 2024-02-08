@@ -26,6 +26,16 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
+    // All requests we send go to this API endpoint.
+    baseURL: 'http://localhost:8340',
+    // extraHTTPHeaders: {
+    //   // We set this header per GitHub guidelines.
+    //   'Accept': 'application/json',
+    //   // Add authorization token to all requests.
+    //   // Assuming personal access token available in the environment.
+    //   'Authorization': `Bearer ${process.env.API_TOKEN}`,
+    // },
+
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -35,16 +45,6 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
-
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
     },
 
     /* Test against mobile viewports. */
