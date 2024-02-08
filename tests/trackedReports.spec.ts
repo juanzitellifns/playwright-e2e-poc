@@ -1,4 +1,16 @@
 import { expect, test } from '@playwright/test';
+import { TestAuthManager } from './../src/TestAuthManager';
+
+let token: string | null = null
+
+test.beforeAll(async () => {
+  const testAuthManager = await TestAuthManager.getInstance()
+  token = testAuthManager.getAccessToken()
+})
+
+test.afterAll(() => {
+  token = null
+})
 
 const TRACKED_REPORTS_QUERY = `
           query TrackedReportsFilter($input: QueryInput!) {
@@ -23,7 +35,7 @@ test('should perform all_unassigned_forms test correctly', async ({ request }) =
   const response = await (await request.post("/graphql", {
     headers:
     {
-      // 'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`
     },
     data: {
       query: TRACKED_REPORTS_QUERY,
@@ -64,7 +76,7 @@ test('should perform your_open_forms test correctly', async ({ request }) => {
   const response = await (await request.post("/graphql", {
     headers:
     {
-      // 'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`
     },
     data: {
       query: TRACKED_REPORTS_QUERY,
@@ -111,7 +123,7 @@ test('should perform aging_forms test correctly', async ({ request }) => {
   const response = await (await request.post("/graphql", {
     headers:
     {
-      // 'Authorization': `Bearer ${token}`
+      'Authorization': `Bearer ${token}`
     },
     data: {
       query: TRACKED_REPORTS_QUERY,

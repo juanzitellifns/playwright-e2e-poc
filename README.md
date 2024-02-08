@@ -41,6 +41,17 @@ cd playwright-e2e-poc
 yarn install
 ```
 
+3. Add environment variables
+
+To be able to authenticate against Auth0 to perform requests, make sure to define the following environment variables in your untracked `.env` file
+
+- AUTH0_AUDIENCE
+- AUTH0_ISSUER_URL
+- AUTH0_CLIENT_ID
+- AUTH0_CLIENT_SECRET
+- AUTH0_BASIC_AUTH_SECRET
+- CI (optional)
+
 ## Run `fns-regulatory` locally
 
 > Make sure you've cloned and ran the `fns-regulatory` project since this is a local-env-focused PoC. Also make sure you've connected your fns-regulatory to a valid mongodb instance.
